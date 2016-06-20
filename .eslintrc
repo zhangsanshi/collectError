@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb-base/legacy",
+  "global-strict": ["error", "always"],
+  "rules": {
+    "no-restricted-syntax": [
+      2,
+      "DebuggerStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ]
+  }
+}

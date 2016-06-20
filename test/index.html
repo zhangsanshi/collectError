@@ -1,0 +1,86 @@
+<script src="../dist/collect.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<iframe id="crossFrame" src="http://localhost:3006" frameborder="0" width="400" height="200"></iframe>
+<script>
+    CollectError.setUrl('../log/?t=1');
+    setTimeout(function () {
+        CollectError.setUrl('../log/');
+    }, 1 * 1000);
+</script>
+<script>
+    function formatLog (func, type) {
+        type = type || '';
+        console.log('>>>>>>>>>' + type + '<<<<<<<<<<');
+        if (func && $.isFunction(func)) {
+            func();
+        }
+    }
+</script>
+<script>
+    formatLog(function () {
+        console.log(a);
+    }, '普通未定义');
+</script>
+
+<script src="./test.js"></script>
+
+<script>
+    formatLog(function () {
+        $.each([1,4], function (key, value, inst, xx) {
+            xx.replace('a', '');
+        });
+    }, '库调用方法未定义');
+</script>
+
+<script>
+    formatLog(function () {
+        function a() {
+            xx();
+        }
+        try {
+            a();
+        } catch (e) {
+            console.log(e);
+        }
+    }, 'try catch 捕捉');
+</script>
+<script>
+    formatLog(function () {
+        throw new Error('what\'s wrong?');
+    }, '直接抛出错误');
+</script>
+<script>
+    formatLog(function () {
+        $.get('/xxx');
+    }, '不能捕捉 ajax 请求出错的情况');
+</script>
+
+<script>
+    formatLog(function () {
+        for(;)
+    }, 'js写法出错');
+</script>
+<script>
+    formatLog(function () {
+        throw new EvalError('EvalError');
+    }, 'EvalError');
+</script>
+<script>
+    formatLog(function () {
+        throw new RangeError('RangeError');
+    }, 'RangeError');
+</script>
+<script>
+    setTimeout(function () {
+        var crossFrame = $('#crossFrame').get(0);
+        var id = null;
+        if (crossFrame) {
+            id = crossFrame.contentWindow.document;
+        } else {
+            id = crossFrame.contentDocument;
+        }
+        formatLog(function () {
+            var body = id.getElementsByClassName('body');
+        }, '跨域出错');
+    }, 2 * 1000);
+</script>
