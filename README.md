@@ -18,8 +18,8 @@ window.onerror = CollectError
 
 ### `CollectError.setUrl(url)` 
 
-说明: 在非`debug`模式下,必须设置`url`
 `url`:`string` 上报错误的地址
+说明: 在非`debug`模式下,必须设置`url`
 
 ### `CollectError.setDebug(isDebug)`
 `isDebug`:`boolean`=`false` 在`debug`模式下,会以`console.log`的形式输出错误信息
