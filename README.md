@@ -27,6 +27,7 @@ window.onerror = CollectError
 ### `CollectError(error, reportUrl)`
 
 说明: 手动调用报告错误方法 可用于`try{}catch(e){}`
+
 1. `error`:`object`(`required`)
 2. `reportUrl`:`string` 设置该参数后,会将错误信息发送到`reportUrl`而不是`CollectError.setUrl(url)`,但不会替换`CollectError.setUrl(url)`设置的值
 
