@@ -14,7 +14,6 @@
 ```javascript
 window.onerror = CollectError
 ```
-如果`onerror`已经被赋值,请注意合理处理
 
 ## API
 

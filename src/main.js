@@ -1,5 +1,6 @@
 var $isDebug = false;
 var $reportUrl = '';
+var oldOnerrorHandler = window.onerror;
 
 function isFunction(functionToCheck) {
   var getType = {};
@@ -109,6 +110,9 @@ function onerror(errorMessage, scriptURI, lineNumber, colNumber, err) {
     e: err
   };
   reportError(error);
+  if (oldOnerrorHandler) {
+    oldOnerrorHandler.apply(this, arguments);
+  }
 }
 
 window.onerror = onerror;

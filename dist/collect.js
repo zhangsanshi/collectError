@@ -58,6 +58,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var $isDebug = false;
 	var $reportUrl = '';
+	var oldOnerrorHandler = window.onerror;
 	
 	function isFunction(functionToCheck) {
 	  var getType = {};
@@ -167,6 +168,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    e: err
 	  };
 	  reportError(error);
+	  if (oldOnerrorHandler) {
+	    oldOnerrorHandler.apply(this, arguments);
+	  }
 	}
 	
 	window.onerror = onerror;
