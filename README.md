@@ -6,6 +6,8 @@
 
 1. [这篇文章大致介绍了方法](http://www.cnblogs.com/cathsfz/p/how-to-capture-and-analyze-javascript-error.html)
 2. [这篇文章详细介绍了当前浏览器的支持情况](http://blog.getsentry.com/2016/01/04/client-javascript-reporting-window-onerror.html)
+3. [页面大量出现了 `Script error` 的解决方案](http://stackoverflow.com/questions/5913978/cryptic-script-error-reported-in-javascript-in-chrome-and-firefox)
+4. [关于 `errorevent` 的 说明](https://html.spec.whatwg.org/multipage/webappapis.html#errorevent)
 
 ## 实现方式
 
